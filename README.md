@@ -7,7 +7,7 @@ void showMap(int[][] map);
 Никита
 
 3. Раскраска карты
-void colorize(int[][] map)
+void colorize(int[][] map, Point2d startPoint, Point2d endPoint)
 Сергей
 
 4. Поиск пути
