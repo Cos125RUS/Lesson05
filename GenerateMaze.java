@@ -1,7 +1,13 @@
 import java.util.Random;
 
-//Метод генерации лабиринта
 public class GenerateMaze {
+    /**
+     * Метод создания лабиринта
+     * @param height высота лабиринта (
+     * @param width ширина лабиринта
+     * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
+     * Возращается двумерный массив maze[height][width]
+     */
     public static int[][] generate(int height, int width) {
 //        int[][] maze =
 //                {{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
