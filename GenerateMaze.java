@@ -13,5 +13,6 @@ public class GenerateMaze {
                         {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1}};
 
         return maze;
+
     }
 }
