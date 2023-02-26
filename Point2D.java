@@ -8,9 +8,15 @@ public class Point2D {
 
     public boolean isEmpty(int[][] map){
         boolean answer = false;
-        if (map[x][y] >= 0){
+        if (map[this.x][this.y] >= 0){
             answer = true;
         }
         return answer;
+    }
+
+    @Override
+    public boolean equals(Object point) {
+        Point2D myPoint = (Point2D) point;
+        return x == myPoint.x && y == myPoint.y;
     }
 }
