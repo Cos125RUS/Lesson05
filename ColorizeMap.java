@@ -2,6 +2,29 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ColorizeMap {
+    private int [][] weights;
+    int height;
+    int width;
+
+    public ColorizeMap(){
+    }
+
+    public ColorizeMap(int[][] map){
+        set(map);
+    }
+
+    public void set(int[][] map){
+        height = map.length;
+        width = map[0].length;
+        weights = new int[height][width];
+        // копирую массив
+        for(int i = 0; i < height; i++){
+            for (int j = 0; j < width; j++){
+                weights[i][j] = map[i][j];
+            }
+        }
+}
+
     /**
      * Расстановка весов в клетках лабиринта не занятых стенками и имеющих путь от точки startPoint
      * вес увеличивается на 1 при каждом шаге от точки startPiont
@@ -9,22 +32,12 @@ public class ColorizeMap {
      * @param startPoint точка старта, вес  = 1
      * @param return возвращает массисв int[][] того же размера, что и входной
      */
-    public static int[][] colorize(int[][] map, Point2D startPoint){
-    // создаю новый массив и копирую в него полученный
-            int [][] weights = new int[map.length][map[0].length];
-            for(int i = 0; i < map.length; i++){
-                for (int j = 0; j < map[i].length; j++){
-                    weights[i][j] = map[i][j];
-                }
-            }
-            int height = weights.length;
-            int width = weights[0].length;
-    // вес startPoint = 1    
-            int weight = 1;
-
-
+    public int[][] colorize(Point2D startPoint){
             Queue<Point2D> fifo = new LinkedList<>();
             fifo.add(startPoint);
+
+            // вес startPoint = 1    
+            int weight = 1;
 
             weights[startPoint.x][startPoint.y] = weight;
     
@@ -63,7 +76,9 @@ public static void test(){
     Point2D startPoint = new Point2D(1, 1);
     Point2D endPoint = new Point2D(height-2, width-2);
 
-    int[][] weights = colorize(labirint, startPoint);
+    ColorizeMap cmap = new ColorizeMap();
+    cmap.set(labirint);
+    int[][] weights = cmap.colorize(startPoint);
 
     Point2D[] way = findPath(weights, startPoint, endPoint);
 
