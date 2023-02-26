@@ -1,5 +1,6 @@
 1. Получить карту
-int[][] getMap(int n, int m);
+class GenerateMaze(int height, int width)
+{ int height; int width; int[][] maze };
 Валера
 
 2. Вывести карту

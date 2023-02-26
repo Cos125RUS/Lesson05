@@ -3,7 +3,7 @@ import java.util.Queue;
 
 public class Findway {
     public static Point2D[] findWay(int[][] map, Point2D startPoint, Point2D endPoint){
-        Point2D[] answer = new Point2D[1000];
+        Point2D[] answer = new Point2D[map[endPoint.x][endPoint.y] +1];
         Queue<Point2D> queue = new LinkedList<Point2D>();
         queue.add(endPoint);
         Point2D point = queue.element();

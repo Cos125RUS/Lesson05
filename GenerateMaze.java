@@ -5,7 +5,7 @@ public class GenerateMaze {
     int height = 10;
     int width = 10;
     int[][] maze;
-    Random random;
+    static Random random;
 
     /**
      * Конструктор класса
