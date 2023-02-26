@@ -3,7 +3,7 @@ public class Example01 {
         int height = 10, width = 10;
 //        int maze[][] = GenerateMaze.maze; // Лабиринт написанный руками
         int maze[][] = GenerateMaze.simple(height, width); // Лабиринт с рандомными стенками
-        GenerateMaze.euler(height, width);
+//        GenerateMaze.euler(height, width); // Тест Эйлера
 
 
     }
