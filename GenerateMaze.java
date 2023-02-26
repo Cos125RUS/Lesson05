@@ -7,7 +7,12 @@ public class GenerateMaze {
     int[][] maze;
     Random random;
 
-
+    /**
+     * Конструктор класса
+     * @param height высота лабиринта
+     * @param width ширина лабиринта
+     * @param maze лабиринт в виде массива int[][]
+     */
     public GenerateMaze(int height, int width) {
         this.height = height;
         this.width = width;
@@ -16,17 +21,14 @@ public class GenerateMaze {
     }
 
     /**
-     * Метод создания лабиринта простым рандомом
-     * @param height высота лабиринта
-     * @param width ширина лабиринта
-     * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
-     * Возращается двумерный массив maze[height][width]
+     * Генерация лабиринта простым рандомом
+     * @param maze лабиринт в виде массива int[height][width], стенки имеют вес = -1
      */
     public int[][] simple() {
         boards(maze, -1);
 
-        for (int i = 1; i < width - 1; i++)
-            for (int j = 0; j < height - 1; j++) {
+        for (int i = 1; i < height - 1; i++)
+            for (int j = 1; j < width - 1; j++) {
                 int r = random.nextInt(4);
                 if (r == 0)
                     maze[i][j] = -1;
@@ -38,10 +40,7 @@ public class GenerateMaze {
 
     /**
      * Метод создания лабиринта алгоритмом Эйлера
-     * @param height высота лабиринта
-     * @param width ширина лабиринта
-     * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
-     * Возращается двумерный массив maze[height][width]
+     * @param maze лабиринт в виде массива int[height][width], стенки имеют вес = -1
      */
     public void euler(){
         int[][] sets = new int[height][width];
@@ -59,14 +58,12 @@ public class GenerateMaze {
 
 
 
-
 //    Закрытые методы класса:
+
+
 
     /**
      * Метод создания границ лабиринта
-     * @param height высота лабиринта
-     * @param width ширина лабиринта
-     * @param map лабиринт в виде массива int[][]
      */
     private void boards(int[][] map, int wall){
         for (int i = 0; i < width; i++) {
