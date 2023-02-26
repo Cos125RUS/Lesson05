@@ -43,21 +43,21 @@ public class ColorizeMap {
     
             while (fifo.size() != 0) {
                 Point2D tmp = fifo.poll();
-                Integer weigh = weights[tmp.x][tmp.y] + 1;
+                weight = weights[tmp.x][tmp.y] + 1;
                 if ((tmp.x+1 < height) && (weights[tmp.x+1][tmp.y] == 0)) {
-                    weights[tmp.x+1][tmp.y] = weigh;
+                    weights[tmp.x+1][tmp.y] = weight;
                     fifo.add(new Point2D(tmp.x+1, tmp.y));
                 }
                 if ((tmp.y+1 < width) && (weights[tmp.x][tmp.y+1] == 0)) {
-                    weights[tmp.x][tmp.y+1] = weigh;
+                    weights[tmp.x][tmp.y+1] = weight;
                     fifo.add(new Point2D(tmp.x, tmp.y+1));
                 }
                 if ((tmp.x-1 >= 0) && (weights[tmp.x-1][tmp.y] == 0)) {
-                    weights[tmp.x-1][tmp.y] = weigh;
+                    weights[tmp.x-1][tmp.y] = weight;
                     fifo.add(new Point2D(tmp.x-1, tmp.y));
                 }
                 if ((tmp.y-1 >= 0) && (weights[tmp.x][tmp.y-1] == 0)) {
-                    weights[tmp.x][tmp.y-1] = weigh;
+                    weights[tmp.x][tmp.y-1] = weight;
                     fifo.add(new Point2D(tmp.x, tmp.y-1));
                 }
             }
@@ -70,7 +70,8 @@ public class ColorizeMap {
 public static void test(){
     int height = 20;
     int width = 20;
-    int[][] labirint = GenerateMaze.simple(height, width);
+    GenerateMaze maze = new GenerateMaze(height, width);
+    int[][] labirint = maze.simple();
     printMap(labirint);
 
     Point2D startPoint = new Point2D(1, 1);
