@@ -16,7 +16,7 @@ public class Example01 {
         Point2D startPoint;
         do {
             startPoint = new Point2D(random.nextInt(1, 9), random.nextInt(1, 9));
-        } while (startPoint.isEmpty(map.maze));
+        } while (!startPoint.isEmpty(map.maze));
         map.maze = cmap.colorize(startPoint);
         System.out.println();
         System.out.println();
@@ -24,7 +24,7 @@ public class Example01 {
         Point2D endPoint;
         do {
             endPoint = new Point2D(random.nextInt(1, 9), random.nextInt(1, 9));
-        } while (endPoint.isEmpty(map.maze));
+        } while (!endPoint.isEmpty(map.maze));
         Point2D[] way = Findway.findWay(map.maze, startPoint, endPoint);
         ShowWay.showWay(map.maze, way);
         System.out.println();
