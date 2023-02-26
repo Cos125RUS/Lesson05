@@ -2,12 +2,15 @@ import java.util.Random;
 
 
 public class GenerateMaze {
-    int height;
-    int width;
+    int height = 10;
+    int width = 10;
+    int[][] maze;
+
 
     public GenerateMaze(int height, int width) {
         this.height = height;
         this.width = width;
+        this.maze = new int[height][width];
     }
 
 
@@ -42,7 +45,6 @@ public class GenerateMaze {
      */
     public int[][] simple() {
         Random random = new Random();
-        int[][] maze = new int[height][width];
         boards(maze, height, width, -1);
 
         for (int i = 1; i < width - 1; i++)
@@ -63,8 +65,7 @@ public class GenerateMaze {
      * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
      * Возращается двумерный массив maze[height][width]
      */
-    public void euler(int height, int width){
-        int[][] maze = new int[height][width];
+    public void euler(){
         int[][] sets = new int[height][width];
         boards(maze, height, width, -1);
         boards(sets, height, width, 1);
