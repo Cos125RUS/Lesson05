@@ -1,14 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Random;
 
 
 public class GenerateMaze {
+    int height;
+    int width;
+
+    public GenerateMaze(int height, int width) {
+        this.height = height;
+        this.width = width;
+    }
+
+
+
     /**
-     * Статический лабиринт
+     * Метод создания cтатического лабиринта
      * @param maze лабиринт в виде массива int[10][10], стенки имеют вес = -1
      */
-    public static int[][] maze =
+    public int[][] staticMaze(){
+    int[][] maze =
             {{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                     {-1, 0, 0, 0, 0, 0, 0, 0, 0, -1},
                     {-1, 0, -1, -1, -1, -1, 0, 0, 0, -1},
@@ -20,6 +29,10 @@ public class GenerateMaze {
                     {-1, 0, 0, 0, 0, 0, 0, 0, 0, -1},
                     {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1}};
 
+    return maze;
+    }
+
+
     /**
      * Метод создания лабиринта простым рандомом
      * @param height высота лабиринта
@@ -27,7 +40,7 @@ public class GenerateMaze {
      * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
      * Возращается двумерный массив maze[height][width]
      */
-    public static int[][] simple(int height, int width) {
+    public int[][] simple() {
         Random random = new Random();
         int[][] maze = new int[height][width];
         boards(maze, height, width, -1);
@@ -50,7 +63,7 @@ public class GenerateMaze {
      * @param maze лабиринт в виде массива int[][], стенки имеют вес = -1
      * Возращается двумерный массив maze[height][width]
      */
-    public static void euler(int height, int width){
+    public void euler(int height, int width){
         int[][] maze = new int[height][width];
         int[][] sets = new int[height][width];
         boards(maze, height, width, -1);
