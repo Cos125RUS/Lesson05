@@ -47,8 +47,9 @@ public class GenerateMaze {
         boards(maze, -1);
         boards(sets, 1);
 
-        for (int i = 1; i < height-1; i++){
+        for (int i = 1; i < height-1; i+=2){
             fillSetLine(sets, width-1, i);
+            buildWall(sets,width-1, i);
             System.out.println();
         }
 
@@ -114,5 +115,9 @@ public class GenerateMaze {
                 }
             }
         }
+
+        for (int j = 2;j < width-2; j++)
+            if (maze[line][j] == -1 && (maze[line+1][j+1] == -1 || maze[line+1][j-1] == -1))
+                maze[line+1][j] = -1;
     }
 }

@@ -17,13 +17,17 @@ public class OutputMap {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if (map[i][j] == 0) {
-                    System.out.printf(" \033[31m" + map[i][j] + "\033[0m ");
+                    System.out.printf(" \033[30m" + map[i][j] + "\033[0m ");
                 } else if (map[i][j] == 1) {
                     System.out.printf(" \033[32m" + map[i][j] + "\033[0m ");
                 } else if (map[i][j] >= 10) {
                     System.out.printf("\033[33m" + map[i][j] + "\033[0m ");
                 } else if (map[i][j] > 0) {
                     System.out.printf(" \033[33m" + map[i][j] + "\033[0m ");
+                } else if (map[i][j] == -2) {
+                    System.out.printf("\033[34m" + map[i][j] + "\033[0m ");
+                } else if (map[i][j] == -3 || map[i][j] == -4) {
+                    System.out.printf("\033[31m" + map[i][j] + "\033[0m ");
                 } else {
                     System.out.printf(map[i][j] + " ");
                 }

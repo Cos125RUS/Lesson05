@@ -1,8 +1,6 @@
-import java.util.Random;
 
 public class Example01 {
     public static void main(String[] args) {
-        Random random = new Random();
         int height = 10, width = 10;
 //        StaticMaze map = new StaticMaze();
 //        map.staticMaze(); // Лабиринт написанный руками
