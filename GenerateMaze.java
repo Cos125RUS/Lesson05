@@ -51,13 +51,16 @@ public class GenerateMaze {
 
         for (int i = 1; i < height - 1; i += 2) {
             fillSetLine(i);
-            if (i < height - 2)
+            if (i < height - 3)
                 buildWall(i);
         }
 
-        for (int i = 2; i < width - 2; i+=2)
-            if (maze[height - 1][i] == -1 && maze[height - 2][i-1] == -1 && maze[height - 1][i+1] == -1)
+        for (int i = 2; i < width - 2; i+=2) {
+            if (maze[height - 1][i] == -1 && maze[height - 2][i - 1] == -1 && maze[height - 1][i + 1] == -1)
                 maze[height - 1][i] = 0;
+            if (maze[height - 1][i] == -1 && maze[height - 2][i - 1] == -1 && maze[height - 1][i - 3] == -1)
+                maze[height - 2][i-1] = 0;
+        }
     }
 
 
