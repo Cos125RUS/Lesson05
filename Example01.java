@@ -5,8 +5,8 @@ public class Example01 {
 //        StaticMaze map = new StaticMaze();
 //        map.staticMaze(); // Лабиринт написанный руками
         GenerateMaze map = new GenerateMaze(height, width);
-        map.simple(); // Лабиринт с рандомными стенками
-//        map.euler(); // Тест Эйлера
+//        map.simple(); // Лабиринт с рандомными стенками
+        map.euler(); // Тест Эйлера
         OutputMap.printMap(map.maze);
         ColorizeMap cmap = new ColorizeMap();
         cmap.set(map.maze);
