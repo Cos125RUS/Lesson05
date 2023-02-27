@@ -1,7 +1,7 @@
 
 public class Example01 {
     public static void main(String[] args) {
-        int height = 10, width = 10;
+        int height = 11, width = 11;
 //        StaticMaze map = new StaticMaze();
 //        map.staticMaze(); // Лабиринт написанный руками
         GenerateMaze map = new GenerateMaze(height, width);

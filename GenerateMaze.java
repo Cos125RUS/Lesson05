@@ -50,13 +50,26 @@ public class GenerateMaze {
         boards(maze, -1);
         boards(sets, 1);
 
-        for (int i = 1; i < height - 1; i += 2) {
+        fillSetLine(sets, width - 1, 1);
+        if (height > 3)
+            buildWall(sets, width - 1, 1);
+        for (int i = 3; i < height - 1; i += 2) {
             fillSetLine(sets, width - 1, i);
             if (i < height - 2)
                 buildWall(sets, width - 1, i);
         }
-        maze[height - 2][1] = 0;
-        maze[height - 2][width - 2] = 0;
+//        for (int i = 1; i < height - 2; i+=2) {
+//            cross(width - 1, i);
+//        }
+//        maze[height - 2][1] = 0;
+//        maze[height - 2][width - 2] = 0;
+
+//        for (int i = 0; i < height; i++){
+//            for (int j = 0; j < width; j++)
+//                System.out.print(sets[i][j] + " ");
+//            System.out.println();
+//        }
+//        System.out.println("\n");
     }
 
 
@@ -80,16 +93,15 @@ public class GenerateMaze {
     private void fillSetLine(int[][] sets, int width, int line) {
         sets[line][1] = 1;
         for (int j = 2; j < width - 1; j++)
-            if (sets[line][j] == 0){
-                if (random.nextInt(2) == 0)
-                    sets[line][j] = sets[line][j - 1];
-                else {
-                    maze[line][j] = -1;
-                    sets[line][j] = sets[line][j - 1] + 1;
-                    if (j != width - 2)
-                        sets[line][j + 1] = sets[line][j++];
-                }
-            }
+            if (maze[line-1][j] == 0 && maze[line-1][j - 1] == -1 && maze[line-1][j + 1] == -1)
+                sets[line][j] = sets[line][j-1];
+            else if (maze[line-1][j] == 0 && maze[line-1][j - 1] == 0)
+                brick(sets, width, line, j++);
+            else if (random.nextInt(2) == 0)
+                sets[line][j] = sets[line][j - 1];
+            else
+                brick(sets, width, line, j++);
+
         sets[line][width - 1] = sets[line][width - 2];
     }
 
@@ -110,12 +122,18 @@ public class GenerateMaze {
                 }
             }
         }
+    }
 
-        for (int j = 2; j < width - 2; j++) {
+    private void cross(int width, int line) {
+        for (int j = 2; j < width - 2; j++)
             if (maze[line][j] == -1 && (maze[line + 1][j + 1] == -1 || maze[line + 1][j - 1] == -1))
                 maze[line + 1][j] = -1;
-            if (maze[line][j] == -1 && (maze[line - 1][j + 1] == -1 || maze[line - 1][j - 1] == -1))
-                maze[line + 1][j] = -1;
-        }
+    }
+
+    private void brick(int[][] sets, int width, int line, int j) {
+        maze[line][j] = -1;
+        sets[line][j] = sets[line][j - 1] + 1;
+        if (j != width - 2)
+            sets[line][j + 1] = sets[line][j];
     }
 }
