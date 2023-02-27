@@ -55,11 +55,11 @@ public class GenerateMaze {
                 buildWall(i);
         }
 
-        for (int i = 2; i < width - 2; i+=2) {
-            if (maze[height - 1][i] == -1 && maze[height - 2][i - 1] == -1 && maze[height - 1][i + 1] == -1)
-                maze[height - 1][i] = 0;
-            if (maze[height - 1][i] == -1 && maze[height - 2][i - 1] == -1 && maze[height - 1][i - 3] == -1)
-                maze[height - 2][i-1] = 0;
+        for (int i = 2; i < width - 2; i += 2) {
+            if (maze[height - 2][i] == -1 && maze[height - 3][i - 1] == -1 && maze[height - 2][i - 2] == -1)
+                maze[height - 3][i - 1] = 0;
+            if (maze[height - 2][i] == -1)
+                i = clearZone(i+1);
         }
     }
 
@@ -111,5 +111,23 @@ public class GenerateMaze {
                 }
             }
         }
+    }
+
+    private int clearZone(int index) {
+        int length = 1;
+        int wall = 1;
+
+        while (maze[height - 2][index + length] == 0) {
+            if (maze[height - 3][index + length] == -1)
+                wall++;
+            length++;
+        }
+
+        if (wall == length)
+            maze[height - 3][random.nextInt(index,  index + length)] = 0;
+
+        index += length - 1;
+
+        return index - 1;
     }
 }

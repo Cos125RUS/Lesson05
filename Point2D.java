@@ -22,12 +22,12 @@ public class Point2D {
         return x == myPoint.x && y == myPoint.y;
     }
 
-    public void notWallPoint(int start, int end, int[][]map){
+    public void notWallPoint(int height, int width, int[][]map){
         Random random = new Random();
         do {
             //System.out.println("ST");
-            x = random.nextInt(start, end);
-            y = random.nextInt(start, end);
+            x = random.nextInt(1, height);
+            y = random.nextInt(1, width);
             //System.out.println("map["+ x + "][" + y + "] = " + map[x][y]);
         } while (!isEmpty(map));
     }

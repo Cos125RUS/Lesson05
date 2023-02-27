@@ -12,8 +12,8 @@ public class Example01 {
         cmap.set(map.maze);
         Point2D startPoint = new Point2D(1,1);
         Point2D endPoint = new Point2D(1,1);
-        startPoint.notWallPoint(1,width, map.maze);
-        endPoint.notWallPoint(1,width, map.maze);
+        startPoint.notWallPoint(height,width, map.maze);
+        endPoint.notWallPoint(height,width, map.maze);
         map.maze = cmap.colorize(startPoint);
         System.out.println("\n");
         OutputMap.printMap(map.maze);
